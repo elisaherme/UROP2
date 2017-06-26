@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">UROP2</string>
+    <string name="service_started">Example Service started</string>
+    <string name="service_label">Example Service Label</string>
+</resources>
