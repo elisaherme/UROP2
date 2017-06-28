@@ -37,7 +37,8 @@
         android:id="@+id/btnBind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bind to Service" >
+        android:text="Bind to Service"
+        android:layout_below="@+id/btnStart">
     </Button>
 
     <Button
@@ -45,28 +46,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="Unbind from Service" >
+        android:text="Unbind from Service"
+        android:layout_below="@+id/btnStop">
     </Button>
 
     <TextView
-    android:id="@+id/textStatus"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Status Goes Here"
-    android:textSize="24sp" />
+        android:id="@+id/textStatus"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Status Goes Here"
+        android:textSize="24sp"
+        android:layout_below="@+id/btnBind"/>
 
     <TextView
-    android:id="@+id/textIntValue"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="Integer Value Goes Here"
-    android:textSize="24sp" />
+        android:id="@+id/textIntValue"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Integer Value Goes Here"
+        android:textSize="24sp"
+        android:layout_below="@+id/textStatus"/>
 
     <TextView
-    android:id="@+id/textStrValue"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:text="String Value Goes Here"
-    android:textSize="24sp" />
+        android:id="@+id/textStrValue"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Integer Value Goes Here"
+        android:textSize="24sp"
+        android:layout_below="@+id/textStatus"/>
+
+    <TextView
+        android:id="@+id/textFloatValue"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Float Value Goes Here"
+        android:textSize="24sp"
+        android:layout_below="@+id/textStrValue"/>
 
     </RelativeLayout>

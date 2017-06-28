@@ -18,8 +18,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-    Button btnStart, btnStop, btnBind, btnUnbind, btnUpby1, btnUpby10;
-    TextView textStatus, textIntValue, textStrValue;
+    Button btnStart, btnStop, btnBind, btnUnbind;
+    TextView textStatus, textIntValue, textFloatValue, textStrValue;
     Messenger mService = null;
     boolean mIsBound;
     final Messenger mMessenger = new Messenger(new IncomingHandler());
@@ -29,11 +29,14 @@ public class MainActivity extends Activity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MyService.MSG_SET_INT_VALUE:
-                    textIntValue.setText("Int Message: " + msg.arg1);
+                    textIntValue.setText("Duration of accident " + msg.arg1);
                     break;
+                case MyService.MSG_SET_FLOAT_VALUE:
+                    float messageToFloat = (float) msg.arg2/100;
+                    textFloatValue.setText("Max Acceleration " + messageToFloat);
                 case MyService.MSG_SET_STRING_VALUE:
-                    String str1 = msg.getData().getString("str1");
-                    textStrValue.setText("Str Message: " + str1);
+                    String flt1 = msg.getData().getString("flt1");
+                    textStrValue.setText("Max Acceleration " + flt1);
                     break;
                 default:
                     super.handleMessage(msg);
@@ -71,7 +74,7 @@ public class MainActivity extends Activity {
         btnUnbind = (Button)findViewById(R.id.btnUnbind);
         textStatus = (TextView)findViewById(R.id.textStatus);
         textIntValue = (TextView)findViewById(R.id.textIntValue);
-        textStrValue = (TextView)findViewById(R.id.textStrValue);
+        textFloatValue = (TextView)findViewById(R.id.textStrValue);
 
         btnStart.setOnClickListener(btnStartListener);
         btnStop.setOnClickListener(btnStopListener);
@@ -88,13 +91,13 @@ public class MainActivity extends Activity {
         super.onSaveInstanceState(outState);
         outState.putString("textStatus", textStatus.getText().toString());
         outState.putString("textIntValue", textIntValue.getText().toString());
-        outState.putString("textStrValue", textStrValue.getText().toString());
+        outState.putString("textFloatValue", textFloatValue.getText().toString());
     }
     private void restoreMe(Bundle state) {
         if (state!=null) {
             textStatus.setText(state.getString("textStatus"));
             textIntValue.setText(state.getString("textIntValue"));
-            textStrValue.setText(state.getString("textStrValue"));
+            textFloatValue.setText(state.getString("textFloatValue"));
         }
     }
     private void CheckIfServiceIsRunning() {
